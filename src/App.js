@@ -4,7 +4,6 @@ import TodoList from './TodoList';
 const App = () => {
   // Todoのストア
   const savedTodos = JSON.parse(localStorage.getItem('todos'));
-  console.log(savedTodos);
   const [todos, setTodos] = useState(savedTodos || []);
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -89,14 +88,8 @@ const App = () => {
           />完了
         </label>
       </div>
-      <button type='button' onClick={logTodo}>ログ</button>
     </>
   );
-
-  // デバグ用
-  function logTodo() {
-    console.log(todos);
-  }
 }
 
 export default App;
