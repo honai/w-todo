@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 
 const App = () => {
   // Todoのストア
-  const [todos, setTodos] = useState([]);
+  const savedTodos = JSON.parse(localStorage.getItem('todos'));
+  console.log(savedTodos);
+  const [todos, setTodos] = useState(savedTodos || []);
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  });
   // TodoのIDを保持する
   const [nextTodoId, setNextTodoId] = useState(0);
   const filtersDef = {
