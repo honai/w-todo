@@ -65,9 +65,24 @@ const App = () => {
       </form>
       <TodoList todos={getVisibleTodos(todos, filter)} toggleTodo={toggleTodo} />
       <div>
-        <button type='button' onClick={() => setFilter(filtersDef.SHOW_ALL)}>ALL</button>
-        <button type='button' onClick={() => setFilter(filtersDef.SHOW_ACTIVE)}>ACTIVE</button>
-        <button type='button' onClick={() => setFilter(filtersDef.SHOW_COMPLETED)}>COMPLETED</button>
+        <label>
+          <input type='radio' name='filter'
+            checked={filter === filtersDef.SHOW_ALL}
+            onChange={() => setFilter(filtersDef.SHOW_ALL)}
+          />全て
+        </label>
+        <label>
+          <input type='radio' name='filter'
+            checked={filter === filtersDef.SHOW_ACTIVE}
+            onChange={() => setFilter(filtersDef.SHOW_ACTIVE)}
+          />アクティブ
+        </label>
+        <label>
+          <input type='radio' name='filter'
+            checked={filter === filtersDef.SHOW_COMPLETED}
+            onChange={() => setFilter(filtersDef.SHOW_COMPLETED)}
+          />完了
+        </label>
       </div>
       <button type='button' onClick={logTodo}>ログ</button>
     </>
