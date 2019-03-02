@@ -8,8 +8,9 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   });
-  // TodoのIDを保持する
-  const [nextTodoId, setNextTodoId] = useState(0);
+  // TodoのIDを管理
+  const lastTodoItem = todos.slice(-1)[0];
+  const [nextTodoId, setNextTodoId] = useState(lastTodoItem ? lastTodoItem.id + 1 : 0);
   const filtersDef = {
     SHOW_ALL: 'SHOW_ALL',
     SHOW_COMPLETED: 'SHOW_COMPLETED',
@@ -79,7 +80,7 @@ const App = () => {
           <input type='radio' name='filter'
             checked={filter === filtersDef.SHOW_ACTIVE}
             onChange={() => setFilter(filtersDef.SHOW_ACTIVE)}
-          />アクティブ
+          />未完了
         </label>
         <label>
           <input type='radio' name='filter'
