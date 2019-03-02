@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
+import Filter from './Filter'
 
 const App = () => {
   // Todoのストア
@@ -69,26 +70,7 @@ const App = () => {
         <button type='submit'>Todo追加</button>
       </form>
       <TodoList todos={getVisibleTodos(todos, filter)} toggleTodo={toggleTodo} />
-      <div>
-        <label>
-          <input type='radio' name='filter'
-            checked={filter === filtersDef.SHOW_ALL}
-            onChange={() => setFilter(filtersDef.SHOW_ALL)}
-          />全て
-        </label>
-        <label>
-          <input type='radio' name='filter'
-            checked={filter === filtersDef.SHOW_ACTIVE}
-            onChange={() => setFilter(filtersDef.SHOW_ACTIVE)}
-          />未完了
-        </label>
-        <label>
-          <input type='radio' name='filter'
-            checked={filter === filtersDef.SHOW_COMPLETED}
-            onChange={() => setFilter(filtersDef.SHOW_COMPLETED)}
-          />完了
-        </label>
-      </div>
+      <Filter currentFilter={filter} setFilter={setFilter} filtersDef={filtersDef} />
     </>
   );
 }
