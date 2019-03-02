@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AddTodoForm.css'
 
 const AddTodoForm = ({addTodo}) => {
   const [newTodoText, setNewTodoText] = useState('');
@@ -13,9 +14,10 @@ const AddTodoForm = ({addTodo}) => {
   }
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <input id='new-todo' autoComplete='off' value={newTodoText} onChange={(e) => setNewTodoText(e.target.value)} />
-      <button type='submit'>Todo追加</button>
+    <form className='todo-form' onSubmit={handleAddTodo}>
+      <input required className='todo-input' placeholder='タスクの追加' autoComplete='off'
+        value={newTodoText} onChange={(e) => setNewTodoText(e.target.value)} />
+      <button disabled={!newTodoText.length} className='add-button' type='submit'>追加</button>
     </form>
   );
 }
