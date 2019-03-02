@@ -9,9 +9,13 @@ const TodoItem = ({todo, toggleTodo}) => (
 );
 
 const TodoList = ({todos, toggleTodo}) => {
-  return todos.map((todo) => (
-    <TodoItem key={todo.id} todo={todo} toggleTodo={() => toggleTodo(todo.id)} />
-  ));
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} toggleTodo={() => toggleTodo(todo.id)} />
+      ))}
+    </ul>
+  );
 }
 
 export default TodoList;
