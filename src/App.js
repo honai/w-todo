@@ -32,16 +32,6 @@ const App = () => {
     setNextTodoId(nextTodoId + 1);
   }
 
-  function editTodo(id, text) {
-    setTodos({
-      ...todos,
-      [id]: {
-        ...todos[id],
-        text: text
-      }
-    })
-  }
-
   function toggleTodo(id) {
     setTodos({
       ...todos,
@@ -73,7 +63,7 @@ const App = () => {
     <>
       <AddTodoForm addTodo={addTodo} />
       <Filter currentFilter={filter} setFilter={setFilter} filtersDef={filtersDef} />
-      <TodoList visibleTodoIds={getVisibleTodoIds(todos, filter)} todos={todos} toggleTodo={toggleTodo} editTodo={editTodo} />
+      <TodoList visibleTodoIds={getVisibleTodoIds(todos, filter)} todos={todos} toggleTodo={toggleTodo} />
     </>
   );
 }

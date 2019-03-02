@@ -9,6 +9,7 @@
   align-items: center;
   list-style-type: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 10px;
 }
 .check-box {
   color: var(--primary-color);
@@ -23,12 +24,18 @@
   left: 0;
 }
 .todo-text {
-  outline: none;
-  border: none;
   flex: 1 1 auto;
   font-size: 17px;
+  padding: 5px;
   white-space: pre-wrap;
 }
 .todo-text.completed {
   text-decoration-line: line-through;
+}
+.deadline-icon {
+  color: rgba(0, 0, 0, 0.6);
+}
+.deadline-date {
+  padding: 5px;
+  color: rgba(0, 0, 0, 0.6);
 }
