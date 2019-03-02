@@ -22,7 +22,7 @@ const AddTodoForm = ({addTodo}) => {
   return (
     <form className='addtodo-form' onSubmit={handleAddTodo}>
       <div className='text-button-group'>
-        <input required className='addtodo-text' placeholder='タスクの追加' autoComplete='off'
+        <input required className='addtodo-text' placeholder='タスクを入力' autoComplete='off'
           value={newTodoText} onChange={(e) => setNewTodoText(e.target.value)} />
         <button disabled={!newTodoText.length} className='add-button' type='submit'>追加</button>
       </div>

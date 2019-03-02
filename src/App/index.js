@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import TodoList from '../TodoList';
 import Filter from '../Filter';
 import AddTodoForm from '../AddTodoForm';
+import SampleTodos from './SampleTodos';
 
 const App = () => {
   // Todoのストア
   const savedTodos = JSON.parse(localStorage.getItem('todos'));
-  const [todos, setTodos] = useState(savedTodos || {});
+  const [todos, setTodos] = useState(savedTodos || SampleTodos);
   // TodoのIDを管理
-  const [nextTodoId, setNextTodoId] = useState(Number(localStorage.getItem('nextTodoId')) || 0);
+  const [nextTodoId, setNextTodoId] = useState(Math.max(...Object.keys(todos)) + 1 || 0);
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
-    localStorage.setItem('nextTodoId', nextTodoId);
   });
   const filtersDef = {
     SHOW_ALL: 'SHOW_ALL',
@@ -67,11 +67,12 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className='app'>
+      <h2 className='title'>やることリスト</h2>
       <AddTodoForm addTodo={addTodo} />
       <Filter currentFilter={filter} setFilter={setFilter} filtersDef={filtersDef} />
       <TodoList visibleTodoIds={getVisibleTodoIds(todos, filter)} todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-    </>
+    </div>
   );
 }
 
