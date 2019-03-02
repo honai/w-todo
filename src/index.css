@@ -3,6 +3,10 @@
 :root {
   --primary-color: rgb(0, 123, 255);
 }
+.title {
+  color: rgba(0, 0, 0, 0.6);
+  margin: 10px;
+}
 
 @media screen and (min-width: 600px) {
   .app {
@@ -12,8 +16,5 @@
     max-width: 600px;
     min-height: 500px;
     margin: auto;
-  }
-  .title {
-    margin: 10px;
   }
 }
