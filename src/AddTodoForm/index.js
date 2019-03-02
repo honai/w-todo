@@ -26,20 +26,24 @@ const AddTodoForm = ({addTodo}) => {
           value={newTodoText} onChange={(e) => setNewTodoText(e.target.value)} />
         <button disabled={!newTodoText.length} className='add-button' type='submit'>追加</button>
       </div>
-      <div className='deadline-group'>
-        <span className='deadline-label'>期限:</span>
-        <input type='date' className='addtodo-date' value={newTodoDate} onChange={(e) => setNewTodoDate(e.target.value)} />
-        <span className='deadline-label'>色:</span>
-        <span className='color-picker'>
-          {Colors.map((color, index) => (
-            <label key={index}
-              className={ClassNames('item', {checked: newTodoColor === color})}
-              style={{backgroundColor: color}}
-            >
-              <input type='radio' name='color' value={color} onChange={() => setNewTodoColor(color)} />
-            </label>
-          ))}
-        </span>
+      <div className='other-group'>
+        <div className='deadline-group'>
+          <span className='deadline-label'>期限:</span>
+          <input type='date' className='addtodo-date' value={newTodoDate} onChange={(e) => setNewTodoDate(e.target.value)} />
+        </div>
+        <div className='color-group'>
+          <span className='deadline-label'>色:</span>
+          <span className='color-picker'>
+            {Colors.map((color, index) => (
+              <label key={index}
+                className={ClassNames('item', {checked: newTodoColor === color})}
+                style={{backgroundColor: color}}
+              >
+                <input type='radio' name='color' value={color} onChange={() => setNewTodoColor(color)} />
+              </label>
+            ))}
+          </span>
+        </div>
       </div>
     </form>
   );

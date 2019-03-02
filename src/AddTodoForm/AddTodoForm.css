@@ -9,6 +9,7 @@
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   flex: 1 1 auto;
+  min-width: 100px;
   font-size: 17px;
   line-height: 1;
   outline: 0;
@@ -26,13 +27,17 @@
   line-height: 1;
   margin-left: 5px;
   padding: 0.5em 1em;
+  white-space: nowrap;
 }
 .add-button:disabled {
   opacity: 0.5;
 }
-.deadline-group {
+.other-group {
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
+}
+.deadline-group {
   margin: 5px;
 }
 .addtodo-date {
@@ -46,15 +51,24 @@
 .deadline-label {
   color: rgba(0, 0, 0, 0.5);
 }
+.color-group {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  flex: 0 0 200px;
+}
+.color-picker {
+  height: 30px;
+  display: flex;
+  flex: 1 1 auto;
+}
 .color-picker > .item {
   /* box-sizing: border-box; */
-  display: inline-block;
-  height: 30px;
-  width: 36px;
   margin: 0 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   cursor: pointer;
+  flex: 1 1 auto;
 }
 .color-picker > .item.checked {
   border: 3px solid rgba(0, 0, 0, 0.5);

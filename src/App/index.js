@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TodoList from './TodoList';
-import Filter from './Filter';
-import AddTodoForm from './AddTodoForm';
+import TodoList from '../TodoList';
+import Filter from '../Filter';
+import AddTodoForm from '../AddTodoForm';
 
 const App = () => {
   // Todoのストア
