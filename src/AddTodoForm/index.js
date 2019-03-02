@@ -28,11 +28,11 @@ const AddTodoForm = ({addTodo}) => {
       </div>
       <div className='other-group'>
         <div className='deadline-group'>
-          <span className='deadline-label'>期限:</span>
+          <span>期限:</span>
           <input type='date' className='addtodo-date' value={newTodoDate} onChange={(e) => setNewTodoDate(e.target.value)} />
         </div>
         <div className='color-group'>
-          <span className='deadline-label'>色:</span>
+          <span>色:</span>
           <span className='color-picker'>
             {Colors.map((color, index) => (
               <label key={index}
