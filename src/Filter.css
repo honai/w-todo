@@ -1,0 +1,19 @@
+@charset "utf-8";
+.todo-filter {
+  margin: 5px;
+  padding: 0;
+  display: flex;
+}
+.todo-filter > li {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  list-style-type: none;
+  flex: 0 0 calc(100% / 3);
+  padding: 0.3em 0;
+  text-align: center;
+}
+.todo-filter > li.active {
+  border-bottom-color: var(--primary-color);
+  color: var(--primary-color);
+}

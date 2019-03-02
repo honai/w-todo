@@ -1,27 +1,22 @@
 import React from 'react';
+import ClassNames from 'classnames';
+import './Filter.css'
 
 const Filter = ({currentFilter, setFilter, filtersDef}) => {
+  const isActive = (filter) => (
+    ClassNames({
+      active: currentFilter === filter
+    })
+  )
   return (
-    <div>
-      <label>
-        <input type='radio' name='filter'
-          checked={currentFilter === filtersDef.SHOW_ALL}
-          onChange={() => setFilter(filtersDef.SHOW_ALL)}
-        />全て
-      </label>
-      <label>
-        <input type='radio' name='filter'
-          checked={currentFilter === filtersDef.SHOW_ACTIVE}
-          onChange={() => setFilter(filtersDef.SHOW_ACTIVE)}
-        />未完了
-      </label>
-      <label>
-        <input type='radio' name='filter'
-          checked={currentFilter === filtersDef.SHOW_COMPLETED}
-          onChange={() => setFilter(filtersDef.SHOW_COMPLETED)}
-        />完了
-      </label>
-    </div>
+    <ul className='todo-filter'>
+      <li className={isActive(filtersDef.SHOW_ALL)}
+          onClick={() => setFilter(filtersDef.SHOW_ALL)}>すべて</li>
+      <li className={isActive(filtersDef.SHOW_ACTIVE)}
+          onClick={() => setFilter(filtersDef.SHOW_ACTIVE)}>未完了</li>
+      <li className={isActive(filtersDef.SHOW_COMPLETED)}
+          onClick={() => setFilter(filtersDef.SHOW_COMPLETED)}>完了</li>
+    </ul>
   );
 }
 
