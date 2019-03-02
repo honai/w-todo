@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
-import Filter from './Filter'
+import Filter from './Filter';
+import AddTodoForm from './AddTodoForm';
 
 const App = () => {
   // Todoのストア
@@ -19,25 +20,12 @@ const App = () => {
   }
   const [filter, setFilter] = useState(filtersDef.SHOW_ALL);
 
-  // 追加しようとしているTodoを保持
-  const [newTodo, setNewTodo] = useState('');
-
-  function handleNewTodoChange(e) {
-    setNewTodo(e.target.value);
-  }
-
-  function addTodo(e) {
-    e.preventDefault();
-    const trimmed = newTodo.trim();
-    if (!trimmed.length) {
-      return;
-    }
+  function addTodo(text) {
     setTodos([...todos, {
       id: nextTodoId,
-      text: newTodo,
+      text: text,
       completed: false,
     }]);
-    setNewTodo('');
     setNextTodoId(nextTodoId + 1);
   }
 
@@ -65,12 +53,9 @@ const App = () => {
 
   return (
     <>
-      <form onSubmit={addTodo}>
-        <input id='new-todo' value={newTodo} onChange={handleNewTodoChange} />
-        <button type='submit'>Todo追加</button>
-      </form>
-      <TodoList todos={getVisibleTodos(todos, filter)} toggleTodo={toggleTodo} />
+      <AddTodoForm addTodo={addTodo} />
       <Filter currentFilter={filter} setFilter={setFilter} filtersDef={filtersDef} />
+      <TodoList todos={getVisibleTodos(todos, filter)} toggleTodo={toggleTodo} />
     </>
   );
 }
