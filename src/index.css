@@ -3,6 +3,9 @@
 :root {
   --primary-color: rgb(0, 123, 255);
 }
+body {
+  font-family: sans-serif;
+}
 .title {
   color: rgba(0, 0, 0, 0.6);
   margin: 10px;

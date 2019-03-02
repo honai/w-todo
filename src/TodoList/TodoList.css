@@ -26,7 +26,7 @@
 .color-label {
   display: inline-block;
   height: 18px;
-  width: 24px;
+  flex: 0 0 24px;
   margin: 0 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
