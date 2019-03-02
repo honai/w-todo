@@ -1,17 +1,21 @@
 @charset "utf-8";
-.todo-form {
-  padding: 5px;
+.addtodo-form {
+  padding: 5px 0;
 }
-.todo-input {
-  border: 2px solid #ddd;
-  border-radius: 0.5em;
+.text-button-group {
+  display: flex;
+}
+.addtodo-text {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  flex: 1 1 auto;
   font-size: 17px;
   line-height: 1;
   outline: 0;
-  padding: 0.5em;
+  padding: 8px;
 }
-.todo-input:focus {
-  border-color: #ccc;
+.addtodo-text:focus, .addtodo-date:focus {
+  border-color: rgba(0, 0, 0, 0.4);
 }
 .add-button {
   background-color: var(--primary-color);
@@ -25,4 +29,18 @@
 }
 .add-button:disabled {
   opacity: 0.5;
+}
+.deadline-group {
+  display: flex;
+  margin: 5px;
+}
+.addtodo-date {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0 5px;
+  margin: 0 5px;
+  outline: 0;
+}
+.deadline-label {
+  color: rgba(0, 0, 0, 0.5);
 }
