@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import ClassNames from 'classnames';
 import './AddTodoForm.css'
+import Colors from './Colors';
 
 const AddTodoForm = ({addTodo}) => {
   const [newTodoText, setNewTodoText] = useState('');
   const [newTodoDate, setNewTodoDate] = useState('');
+  const [newTodoColor, setNewTodoColor] = useState(Colors[0]);
   function handleAddTodo(e) {
     e.preventDefault();
     const trimmedText = newTodoText.trim();
     if (!trimmedText.length) {
       return;
     }
-    addTodo(trimmedText, newTodoDate);
+    addTodo(trimmedText, newTodoDate, newTodoColor);
     setNewTodoText('');
+    setNewTodoDate('');
+    setNewTodoColor(Colors[0]);
   }
 
   return (
@@ -24,6 +29,17 @@ const AddTodoForm = ({addTodo}) => {
       <div className='deadline-group'>
         <span className='deadline-label'>期限:</span>
         <input type='date' className='addtodo-date' value={newTodoDate} onChange={(e) => setNewTodoDate(e.target.value)} />
+        <span className='deadline-label'>色:</span>
+        <span className='color-picker'>
+          {Colors.map((color, index) => (
+            <label key={index}
+              className={ClassNames('item', {checked: newTodoColor === color})}
+              style={{backgroundColor: color}}
+            >
+              <input type='radio' name='color' value={color} onChange={() => setNewTodoColor(color)} />
+            </label>
+          ))}
+        </span>
       </div>
     </form>
   );

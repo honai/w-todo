@@ -20,12 +20,13 @@ const App = () => {
   }
   const [filter, setFilter] = useState(filtersDef.SHOW_ALL);
 
-  function addTodo(text, date = null) {
+  function addTodo(text, date, color) {
     setTodos({
         ...todos,
         [nextTodoId]: {
           text: text,
           date: date,
+          color: color,
           completed: false,
         }
     });

@@ -8,6 +8,7 @@ const TodoItem = ({id, todo, toggleTodo}) => (
       <i className='material-icons'>{todo.completed ? 'check_circle' : 'radio_button_unchecked'}</i>
       <input type='checkbox' checked={todo.completed} onChange={() => toggleTodo(id)} />
     </label>
+    <span className='color-label' style={{backgroundColor: todo.color}}></span>
     <span className={ClassNames('todo-text', {completed: todo.completed})}>{todo.text}</span>
     {todo.date ? <><i className='material-icons deadline-icon'>calendar_today</i><span className='deadline-date'>{todo.date}</span></>: false}
   </li>

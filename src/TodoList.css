@@ -9,7 +9,7 @@
   align-items: center;
   list-style-type: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0 10px;
+  padding: 0 5px;
 }
 .check-box {
   color: var(--primary-color);
@@ -22,6 +22,15 @@
   opacity: 0;
   position: absolute;
   left: 0;
+}
+.color-label {
+  display: inline-block;
+  height: 18px;
+  width: 24px;
+  margin: 0 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  background-color: #fff;
 }
 .todo-text {
   flex: 1 1 auto;
