@@ -43,6 +43,12 @@ const App = () => {
     });
   }
 
+  function deleteTodo(id) {
+    const afterDeleted = {...todos};
+    delete afterDeleted[id];
+    setTodos(afterDeleted)
+  }
+
   function getVisibleTodoIds(todos, filter) {
     const ids = Object.keys(todos);
     switch (filter) {
@@ -64,7 +70,7 @@ const App = () => {
     <>
       <AddTodoForm addTodo={addTodo} />
       <Filter currentFilter={filter} setFilter={setFilter} filtersDef={filtersDef} />
-      <TodoList visibleTodoIds={getVisibleTodoIds(todos, filter)} todos={todos} toggleTodo={toggleTodo} />
+      <TodoList visibleTodoIds={getVisibleTodoIds(todos, filter)} todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
   );
 }
