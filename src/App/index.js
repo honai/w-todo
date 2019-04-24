@@ -6,13 +6,25 @@ import SampleTodos from './SampleTodos';
 
 const App = () => {
   // Todoのストア
-  const savedTodos = JSON.parse(localStorage.getItem('todos'));
-  const [todos, setTodos] = useState(savedTodos || SampleTodos);
-  // TodoのIDを管理
-  const [nextTodoId, setNextTodoId] = useState(Math.max(...Object.keys(todos)) + 1 || 0);
+  const initialTodos = () => {
+    const version = localStorage.getItem('version') || 0
+    const oldData = JSON.parse(localStorage.getItem('todos'))
+    let data = []
+    if (version === 0 && typeof oldData === 'object') {
+      localStorage.setItem('version', '0.1')
+      data = Object.keys(oldData).map(id => (
+        oldData[id]
+      ))
+    } else {
+      data = oldData
+    }
+    return data.length === 0 ? SampleTodos : data
+  }
+  const [todos, setTodos] = useState(initialTodos())
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
-  });
+    console.log(todos.length)
+  }, [todos.length]);
   const filtersDef = {
     SHOW_ALL: 'SHOW_ALL',
     SHOW_COMPLETED: 'SHOW_COMPLETED',
@@ -21,45 +33,41 @@ const App = () => {
   const [filter, setFilter] = useState(filtersDef.SHOW_ALL);
 
   function addTodo(text, date, color) {
-    setTodos({
-        ...todos,
-        [nextTodoId]: {
-          text: text,
-          date: date,
-          color: color,
-          completed: false,
-        }
-    });
-    setNextTodoId(nextTodoId + 1);
+    setTodos([
+      ...todos,
+      {
+        id: Date.now(),
+        text: text,
+        date: date,
+        color: color,
+        completed: false,
+      }
+    ]);
   }
 
   function toggleTodo(id) {
-    setTodos({
-      ...todos,
-      [id]: {
-        ...todos[id],
-        completed: !todos[id].completed
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        return {...todo, completed: !todo.completed}
       }
-    });
+      return todo
+    }));
   }
 
   function deleteTodo(id) {
-    const afterDeleted = {...todos};
-    delete afterDeleted[id];
-    setTodos(afterDeleted)
+    setTodos(todos.filter(todo => todo.id !== id))
   }
 
-  function getVisibleTodoIds(todos, filter) {
-    const ids = Object.keys(todos);
+  function getVisibleTodos(todos, filter) {
     switch (filter) {
       case filtersDef.SHOW_ALL: 
-        return ids;
+        return todos
 
       case filtersDef.SHOW_COMPLETED:
-        return ids.filter(id => todos[id].completed);
+        return todos.filter(todo => todo.completed)
 
       case filtersDef.SHOW_ACTIVE:
-        return ids.filter(id => !todos[id].completed);
+        return todos.filter(todo => !todo.completed)
 
       default:
         throw new Error(`Unknown filter: ${filter}`);
@@ -71,7 +79,7 @@ const App = () => {
       <h2 className='title'>やることリスト</h2>
       <AddTodoForm addTodo={addTodo} />
       <Filter currentFilter={filter} setFilter={setFilter} filtersDef={filtersDef} />
-      <TodoList visibleTodoIds={getVisibleTodoIds(todos, filter)} todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoList visibleTodos={getVisibleTodos(todos, filter)} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </div>
   );
 }

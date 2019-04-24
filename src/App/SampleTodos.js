@@ -1,13 +1,14 @@
-export default {
-  0: {
+export default [
+  {
+    id: 1,
     text: 'サンプルタスク',
     color: '#fff',
     date: '2020-01-01',
     completed: false
-  },
-  1: {
+  }, {
+    id: 2,
     text: '完了したタスク',
     color: '#aecbfa',
     completed: true
   }
-}
+]
