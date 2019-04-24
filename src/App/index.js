@@ -10,10 +10,10 @@ const App = () => {
     const version = localStorage.getItem('version') || 0
     const oldData = JSON.parse(localStorage.getItem('todos'))
     let data = []
-    if (version === 0 && typeof oldData === 'object') {
+    if (version === 0) {
       localStorage.setItem('version', '0.1')
       data = Object.keys(oldData).map(id => (
-        oldData[id]
+        { ...oldData[id], id: id }
       ))
     } else {
       data = oldData
