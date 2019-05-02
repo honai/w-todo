@@ -18,6 +18,9 @@ const App = () => {
     } else {
       data = oldData
     }
+    if (data === null || typeof data === 'undefined') {
+      return SampleTodos
+    }
     return data.length === 0 ? SampleTodos : data
   }
   const [todos, setTodos] = useState(initialTodos())
@@ -48,7 +51,7 @@ const App = () => {
   function toggleTodo(id) {
     setTodos(todos.map(todo => {
       if (todo.id === id) {
-        return {...todo, completed: !todo.completed}
+        return { ...todo, completed: !todo.completed }
       }
       return todo
     }));
@@ -60,7 +63,7 @@ const App = () => {
 
   function getVisibleTodos(todos, filter) {
     switch (filter) {
-      case filtersDef.SHOW_ALL: 
+      case filtersDef.SHOW_ALL:
         return todos
 
       case filtersDef.SHOW_COMPLETED:
