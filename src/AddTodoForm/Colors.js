@@ -1,6 +1,1 @@
-export default [
-  '#fff',
-  '#fdcfe8',
-  '#aecbfa',
-  '#ccff90',
-]
+export default ['#fff', '#fdcfe8', '#aecbfa', '#ccff90'];

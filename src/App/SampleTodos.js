@@ -4,11 +4,12 @@ export default [
     text: 'サンプルタスク',
     color: '#fff',
     date: '2020-01-01',
-    completed: false
-  }, {
+    completed: false,
+  },
+  {
     id: 2,
     text: '完了したタスク',
     color: '#aecbfa',
-    completed: true
-  }
-]
+    completed: true,
+  },
+];
